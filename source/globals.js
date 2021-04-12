@@ -1,0 +1,4 @@
+const CANVAS = { WIDTH: 790, HEIGHT: 580 };
+const INITIAL_LOCATION = { x: CANVAS.WIDTH / 2, y: CANVAS.HEIGHT / 2 };
+const STROKE_WEIGHT = 6;
+const STEP_SIZE = 4;
