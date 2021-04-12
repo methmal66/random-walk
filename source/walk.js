@@ -1,9 +1,9 @@
 const getRandomStep = (stepSize) => {
   const DIRECTIONS = [
-    { x: stepSize, y: stepSize },
-    { x: -stepSize, y: stepSize },
-    { x: stepSize, y: -stepSize },
-    { x: -stepSize, y: -stepSize },
+    { x: 0, y: stepSize },
+    { x: stepSize, y: 0 },
+    { x: -stepSize, y: 0 },
+    { x: 0, y: -stepSize },
   ];
   return () => {
     const option = Math.round(3 * Math.random());
@@ -13,17 +13,32 @@ const getRandomStep = (stepSize) => {
 
 const randomStep = getRandomStep(STEP_SIZE);
 
+const findGotoLocation = (init) => {
+  return (current) => {
+    const step = randomStep();
+    if (isWalkInsideCanvas(current)) {
+      return {
+        x: current.x + step.x,
+        y: current.y + step.y,
+      };
+    }
+    return init;
+  };
+};
+
 const findNextCoordinate = (init) => {
   let currentLocation = init;
+  const gotoLocation = findGotoLocation(init);
   return () => {
-    const step = randomStep();
-    const gotoLocation = {
-      x: currentLocation.x + step.x,
-      y: currentLocation.y + step.y,
-    };
-    currentLocation = gotoLocation;
-    return gotoLocation;
+    currentLocation = gotoLocation(currentLocation);
+    return currentLocation;
   };
 };
 
 const nextCoordinate = findNextCoordinate(INITIAL_LOCATION);
+
+const isWalkInsideCanvas = (coords) =>
+  coords.x < CANVAS.WIDTH &&
+  coords.x > 0 &&
+  coords.y < CANVAS.HEIGHT &&
+  coords.y > 0;
