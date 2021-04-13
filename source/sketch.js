@@ -4,7 +4,7 @@ function setup() {
 }
 
 function draw() {
-  const coords = nextCoordinate();
+  const coords = findNextCoordinate();
   if (isWalkInsideCanvas(coords)) {
     point(coords.x, coords.y);
   }
