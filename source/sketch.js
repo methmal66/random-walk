@@ -5,7 +5,5 @@ function setup() {
 
 function draw() {
   const coords = findNextCoordinate();
-  if (isWalkInsideCanvas(coords)) {
-    point(coords.x, coords.y);
-  }
+  point(coords.x, coords.y);
 }
