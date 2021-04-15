@@ -1,15 +1,33 @@
 {
-  "name": "test",
+  "name": "random-walk",
   "version": "1.0.0",
-  "description": "test p5.js as an electron app",
+  "description": "electron app built with p5.js art library to demonstrate random walk",
   "main": "main.js",
-  "author": "Sanuja Methmal",
+  "author": {
+    "name": "Sanuja Methmal",
+    "email": "methmal66@gmail.comm"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/methmal66/random-walk"
+  },
   "license": "MIT",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "linux": "electron-builder --linux"
   },
   "devDependencies": {
     "electron": "^12.0.2",
+    "electron-builder": "^22.10.5",
     "electron-reloader": "^1.2.0"
+  },
+  "build": {
+    "appId": "com.sanujamethmal.electron.p5.random-walk",
+    "linux": {
+      "target": [
+        "deb"
+      ],
+      "category": "Utility"
+    }
   }
 }

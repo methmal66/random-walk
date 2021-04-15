@@ -10,7 +10,7 @@ function createWindow() {
     height: 600,
   });
 
-  win.loadFile("./index.html");
+  win.loadFile("assets/index.html");
   win.setMenuBarVisibility(false);
 }
 
